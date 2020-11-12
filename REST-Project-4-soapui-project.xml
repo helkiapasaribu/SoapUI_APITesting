@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d7375e30-31e1-47c8-b2fa-f67a3c5af544" activeEnvironment="Default" name="REST Project 4" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="da4227a9-6fa1-49c9-902d-1bb0bd6edb63" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://worldtimeapi.org" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://worldtimeapi.org</con:endpoint></con:endpoints><con:resource name="" path="/api/timezone/{area}/{location}" id="e30c76aa-3bb3-4471-abd9-3254345bbac2"><con:settings/><con:parameters><con:parameter><con:name>location</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>area</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="1" id="33988ef1-0d6c-4082-b92f-882fd1204342" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>404</con:status><con:params/><con:element xmlns:tim="http://worldtimeapi.org/api/timezone">tim:Fault</con:element></con:representation><con:request name="Request 1" id="7202c52e-9cd4-4c9a-b3ba-519ead9f3514" mediaType="application/json"><con:settings/><con:endpoint>http://worldtimeapi.org</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry>location</con:entry><con:entry>area</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="location" path="/api/timezone/{area}/{location}" id="7ab77021-cf2b-4fd2-8524-c0a8fca9127a"><con:settings/><con:parameters><con:parameter><con:name>area</con:name><con:style>TEMPLATE</con:style></con:parameter><con:parameter><con:name>location</con:name><con:style>TEMPLATE</con:style></con:parameter></con:parameters><con:method name="Method 1" id="fd48f5ee-acde-4460-8d97-88008cafcc7a" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element>Response</con:element></con:representation><con:request name="Request 1" id="d9b16806-1e4a-4654-ab1e-81d752c7325b" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://worldtimeapi.org</con:endpoint><con:request/><con:originalUri>http://worldtimeapi.org/api/timezone//</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry>area</con:entry><con:entry>location</con:entry></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:testSuite id="aa9886ee-13c1-4cb4-9a05-1a92f896fab6" name="Data Driven Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="8109e021-3061-4e2a-958c-a034c62055e7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="Get Local Time" id="933e272b-ca7f-4aa0-8c4a-cef9f78fed51"><con:settings/><con:config service="http://worldtimeapi.org" resourcePath="/api/timezone/{area}/{location}" methodName="1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Get Local Time" id="7202c52e-9cd4-4c9a-b3ba-519ead9f3514" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://worldtimeapi.org</con:endpoint><con:request/><con:originalUri>http://worldtimeapi.org/api/timezone</con:originalUri><con:assertion type="Simple Contains" id="1680bca5-ea6b-474d-a003-959c62682026" name="Contains"><con:configuration><token>Australia</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="7da59817-c9bd-4321-b3e9-7289b014494a"><con:configuration/></con:assertion><con:assertion type="JsonPath Existence Match" id="fe51118b-8132-4ba1-8295-6aca47af1ecc" name="JsonPath Existence Match 1"><con:configuration><path>$.dst</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="area" value="${#TestSuite#inArea}"/>
+  <con:entry key="location" value="${#TestSuite#inLocation}"/>
+</con:parameters><con:parameterOrder><con:entry>location</con:entry><con:entry>area</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fab031f3-17fd-4f94-b265-e0b94f3e3dee" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetInputs" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="4906a6cb-1855-4754-aeb8-ec9d50e0da47"><con:settings/><con:config><script>//1. 
+/*//get that data out of that file
+//def inputFilePath = testRunner.testCase.testSuite.getPropertyValue("inputFile")
+
+//
+//def tc=testRunner.testCase.testSuite.project.testSuite("Data Driven Test Suite").testCases("TestCase 1")
+
+
+//read the data out of file
+//File file = new File(inputFilePath.toString()).eachLine{
+context.mylines.each{
+	testRunner.testCase.testSuite.setPropertyValue("inArea", it.split(",")[0])
+	testRunner.testCase.testSuite.setPropertyValue("inLocation", it.split(",")[1])
+
+
+	//hit api/test case yang akan dijalankan seara berulang berdasarkan perbaris di file
+	def tc = testRunner.testCase.testSuite.testCases["TestCase 1"]
+	//run test case ini
+	def runner = tc.run(null,false)
+
+	log.info("${runner.status}")
+	sleep 500
+}*/
+
+//-----------------------------------------------------------------------------------------------------------------------------
+//2. 
+/* memanggil file secara langsung, dengan menyimpan variabel nput file di properties test case)
+//get that data out of that file
+//def inputFilePath = testRunner.testCase.testSuite.getPropertyValue("inputFile") */
+
+/*memanggil file melalui gloval variabel
+//untuk manggil global variabel
+def inputFilePath = context.expand('${#Global#inputFile}') */
+
+/*memanggil file menggunakan environtment variabel
+/*memanggil file tanpa menggunakan global variabel (case:saat gak punya akses ke dokumen)
+def inputFilePath = context.expand('${#Env#Home}')
+
+log.info("${inputFilePath}\\Desktop\\worldtimeinput.csv")*/ 
+//
+//def tc=testRunner.testCase.testSuite.project.testSuite("Data Driven Test Suite").testCases("TestCase 1")
+
+/*
+//read the data out of file
+File file = new File(inputFilePath.toString()).eachLine{
+	//try semua yang ada disini
+	try{testRunner.testCase.testSuite.setPropertyValue("inArea", it.split(",")[0])
+	testRunner.testCase.testSuite.setPropertyValue("inLocation", it.split(",")[1])
+
+
+	//hit api/test case yang akan dijalankan seara berulang berdasarkan perbaris di file
+	def tc = testRunner.testCase.testSuite.testCases["TestCase 1"]
+	//run test case ini
+	def runner = tc.run(null,false)
+
+	log.info("${runner.status}")
+	sleep 500
+
+	//handle network down menggunakan throw exception dan stop dan kita tidak ingin dia berhernt
+	//maunya continue dan do next step in the loop
+	1/0 //-> ini pasti error, maka gunakan try catch
+	}
+	//dan akan di catch kalo ada something wrong
+	catch(Exception){
+		log.info("Exception Thrown")
+	}
+}
+*/
+
+//------------------------------------------------------------------------------------------------
+//3.
+//memanggil file secara langsung, dengan menyimpan variabel nput file di properties test case)
+//get that data out of that file
+//def inputFilePath = testRunner.testCase.testSuite.getPropertyValue("inputFile") 
+
+//memanggil file melalui gloval variabel
+//untuk manggil global variabel
+def inputFilePath = context.expand('${#Global#inputFile}') 
+
+/*memanggil file menggunakan environtment variabel
+/*memanggil file tanpa menggunakan global variabel (case:saat gak punya akses ke dokumen)
+def inputFilePath = context.expand('${#Env#Home}')
+
+log.info("${inputFilePath}\\Desktop\\worldtimeinput.csv")*/ 
+
+//
+//def tc=testRunner.testCase.testSuite.project.testSuite("Data Driven Test Suite").testCases("TestCase 1")
+
+//method kumpulan dari beberapa baris code yang dapat dipanggil di banyak baris code lain, yang membutuhkan
+void setProperties(String currentLine){
+	testRunner.testCase.testSuite.setPropertyValue("inArea", currentLine.split(",")[0])
+	testRunner.testCase.testSuite.setPropertyValue("inLocation", currentLine.split(",")[1])
+}
+
+//read the data out of file
+File file = new File(inputFilePath.toString()).eachLine{
+	//try semua yang ada disini
+	try{
+
+		setProperties(it)
+
+	//hit api/test case yang akan dijalankan seara berulang berdasarkan perbaris di file
+	def tc = testRunner.testCase.testSuite.testCases["TestCase 1"]
+	//run test case ini
+	def runner = tc.run(null,false)
+
+	log.info("${runner.status}")
+	sleep 500
+
+	//handle network down menggunakan throw exception dan stop dan kita tidak ingin dia berhernt
+	//maunya continue dan do next step in the loop
+	//1/0 //-> ini pasti error, maka gunakan try catch
+	}
+	//dan akan di catch kalo ada something wrong
+	catch(Exception){
+		log.info("Exception Thrown")
+	}
+}
+
+
+
+
+
+</script></con:config></con:testStep><con:setupScript>//handel file
+//get that data out of that file
+def inputFilePath = testRunner.testCase.testSuite.getPropertyValue("inputFile")
+
+//membaca input filenya kedalam file object
+def myFile = new File(inputFilePath) //membuka file 
+
+//membaca data dari file kedalam arrays
+def lines = myFile.readLines()
+
+context.mylines = lines
+
+//cek hanya ada 4 lines dalam file 
+assert lines.size() == 4
+
+</con:setupScript><con:properties/></con:testCase><con:testCase id="8d763b42-b21b-41ae-b8fc-89c88a43ce37" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 3" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="Get Local Time" id="dc4fdf17-1e94-4146-8d51-93f03b668abd"><con:settings/><con:config service="http://worldtimeapi.org" resourcePath="/api/timezone/{area}/{location}" methodName="1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Get Local Time" id="7202c52e-9cd4-4c9a-b3ba-519ead9f3514" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://worldtimeapi.org</con:endpoint><con:request/><con:originalUri>http://worldtimeapi.org/api/timezone/Australia/Sydney</con:originalUri><con:assertion type="Simple Contains" id="f8f6c4f2-ccbf-4110-be82-fced0e38f960" name="Contains"><con:configuration><token>Australia</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="JsonPath Existence Match" id="40b8a507-6db9-444a-b902-05f417fa92fa" name="JsonPath Existence Match"><con:configuration><path>$.dst</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="JsonPath Count" id="f4665a4c-a791-404d-8932-95bae160eeac" name="JsonPath Count"><con:configuration><path>$.dst</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="fd8f17a1-d156-4b3c-ad2f-e1524ee742fb" name="Valid HTTP Status Codes"><con:configuration><codes>200,201</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="b24044d7-861a-4b7f-822b-f4c86315c0c5" name="Invalid HTTP Status Codes"><con:configuration><codes>500,404,503</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="55d5bea3-e167-4d2f-b63d-29407c773589" name="Response SLA"><con:configuration><SLA>1744</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="224ec7ec-03c6-4d1f-a0cb-b08eb644ec70" name="Script Assertion"><con:configuration><scriptText>//get response dari object dengna membuat sebuah variabel
+def response_message = messageExchange.responseContent
+
+//read response to message, untuk ngecek apakah day_of_year berada diantara 1 sampai 366
+//log.info(response_message.day_of_year) // ini akan error, karena ini interpretasi dari string, padahal responnya json, maka harus parsing ke json
+
+//parsing ke json, dengan membuat sebuah variabel
+def response_json = new groovy.json.JsonSlurper().parseText(response_message)
+
+//read response to json
+//log.info(response_json.day_of_year)
+//pengganti log.info maka bisa diganti dengan membuat sebuah variabel
+def response_day = response_json.day_of_year
+
+//untuk memastikan bahwa respon yang dihasilkan untuk day of year antara 1 sampai 366, maka lakukan pengecekan
+if(1 &lt;=response_day &amp; response_day &lt;= 366)
+{
+	assert true
+}else{
+	log.info("wrong day of year : ${response_day}")
+	assert false
+}
+</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="area" value="${#TestSuite#inArea}"/>
+  <con:entry key="location" value="${#TestSuite#inLocation}"/>
+</con:parameters><con:parameterOrder><con:entry>location</con:entry><con:entry>area</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>inputFile</con:name><con:value>/Users/helkia.pasaribu/Desktop/worldtimeinput.csv</con:value></con:property><con:property><con:name>inArea</con:name><con:value>Australia</con:value></con:property><con:property><con:name>inLocation</con:name><con:value>Sydney</con:value></con:property></con:properties></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
